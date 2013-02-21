@@ -1,0 +1,5 @@
+Make a common interface for WPF Model and LinqSQLModel
+Make the application localizable
+Implement the missing CRUD operations (Update, Delete)
+Host the service somewhere instead of letting visual studio do its magic.
+Host the database somewhere instead of using a local db
