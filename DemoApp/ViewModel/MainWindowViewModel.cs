@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Data;
 using CustomerDemoApp.DataAccess;
-using CustomerDemoApp.Model;
+using CustomerDemoApp.Models;
 using CustomerDemoApp.Properties;
 
 namespace CustomerDemoApp.ViewModel
@@ -98,7 +98,7 @@ namespace CustomerDemoApp.ViewModel
 
         void CreateNewCustomer()
         {
-            Customer newCustomer = new Customer(); 
+            FECustomer newCustomer = new FECustomer(); 
             CustomerViewModel workspace = new CustomerViewModel(newCustomer, _customerRepository);
             this.Workspaces.Add(workspace);
             this.SetActiveWorkspace(workspace);

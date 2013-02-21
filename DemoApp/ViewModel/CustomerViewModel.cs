@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using CustomerDemoApp.DataAccess;
-using CustomerDemoApp.Model;
+using CustomerDemoApp.Models;
 using CustomerDemoApp.Properties;
 
 namespace CustomerDemoApp.ViewModel
@@ -13,12 +13,12 @@ namespace CustomerDemoApp.ViewModel
     public class CustomerViewModel : WorkspaceViewModel, IDataErrorInfo
     {
 
-        readonly Customer _customer;
+        readonly FECustomer _customer;
         readonly CustomerRepository _customerRepository;
         RelayCommand _saveCommand;
 
 
-        public CustomerViewModel(Customer customer, CustomerRepository customerRepository)
+        public CustomerViewModel(FECustomer customer, CustomerRepository customerRepository)
         {
             if (customer == null)
                 throw new ArgumentNullException("customer");

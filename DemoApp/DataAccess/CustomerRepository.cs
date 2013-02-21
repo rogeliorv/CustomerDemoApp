@@ -6,8 +6,8 @@ using System.Windows;
 using System.Windows.Resources;
 using System.Xml;
 using System.Xml.Linq;
-using CustomerDemoApp.Model;
-
+using CustomerDemoApp.Models;
+using CustomerDemoApp.ServiceReference;
 
 namespace CustomerDemoApp.DataAccess
 {
@@ -16,7 +16,9 @@ namespace CustomerDemoApp.DataAccess
     /// </summary>
     public class CustomerRepository
     {
-        readonly List<CustomerDemoApp.Model.Customer> _customers;
+        readonly List<FECustomer> _customers;
+        private static CustomerServiceClient client = new CustomerServiceClient();
+
 
         /// <summary>
         /// Creates a new repository of customers.
@@ -38,17 +40,14 @@ namespace CustomerDemoApp.DataAccess
         /// If the customer is already in the repository, an
         /// exception is not thrown.
         /// </summary>
-        public void AddCustomer(Customer customer)
+        public void AddCustomer(FECustomer customer)
         {
             if (customer == null)
                 throw new ArgumentNullException("customer");
 
             if (!_customers.Contains(customer))
             {
-                // TODO: Make a common interface for wpf model and linqsql model
-                CustomerDemoApp.ServiceReference.CustomerServiceClient client = new CustomerDemoApp.ServiceReference.CustomerServiceClient();
-
-                client.addCustomer(new CustomerDemoApp.ServiceReference.Customer { FirstName = customer.FirstName, LastName = customer.LastName, Email = customer.Email, Curp = customer.Curp });
+                client.addCustomer(new DBCustomer { });
                 _customers.Add(customer);
 
 
@@ -61,7 +60,7 @@ namespace CustomerDemoApp.DataAccess
         /// Returns true if the specified customer exists in the
         /// repository, or false if it is not.
         /// </summary>
-        public bool ContainsCustomer(Customer customer)
+        public bool ContainsCustomer(FECustomer customer)
         {
             if (customer == null)
                 throw new ArgumentNullException("customer");
@@ -72,16 +71,14 @@ namespace CustomerDemoApp.DataAccess
         /// <summary>
         /// Returns a shallow-copied list of all customers in the repository.
         /// </summary>
-        public List<Customer> GetCustomers()
+        public List<FECustomer> GetCustomers()
         {
-            return new List<Customer>(_customers);
+            return new List<FECustomer>(_customers);
         }
 
-        static List<Customer> LoadCustomers()
+        static List<FECustomer> LoadCustomers()
         {
-            CustomerDemoApp.ServiceReference.CustomerServiceClient client = new CustomerDemoApp.ServiceReference.CustomerServiceClient();
-            return (from e in client.getAllCustomers()
-                    select new Customer { FirstName = e.FirstName, LastName = e.LastName, Email = e.Email, Curp = e.Curp }).ToList();
+            return (from e in client.getAllCustomers() select FECustomer.FromBaseCustomer(e)).ToList();
         }
     }
 }

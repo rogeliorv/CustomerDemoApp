@@ -5,11 +5,21 @@ using System.Text.RegularExpressions;
 using CustomerDemoApp.Properties;
 using System.Collections.Generic;
 
-namespace CustomerDemoApp.Model
+namespace CustomerDemoApp.Models
 {
 
+    public interface ICustomerModel
+    {
+
+    }
+}
 
 
+
+
+
+namespace CustomerDemoApp.Model
+{
 
     /// <summary>
     /// Basic customer model with information for the Mexican market.

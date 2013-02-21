@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using CustomerDemoApp.Models;
+
 
 namespace CustomerDemoApp.Service
 {
@@ -11,12 +13,12 @@ namespace CustomerDemoApp.Service
     public interface ICustomerService
     {
         [OperationContract]
-        List<Customer> getAllCustomers();
+        List<DBCustomer> getAllCustomers();
 
         [OperationContract]
-        void addCustomer(Customer customer);
+        void addCustomer(DBCustomer customer);
 
         [OperationContract]
-        void deleteCustomer(Customer customer);
+        void deleteCustomer(DBCustomer customer);
     }
 }

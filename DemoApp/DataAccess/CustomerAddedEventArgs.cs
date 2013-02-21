@@ -1,5 +1,5 @@
 ﻿using System;
-using CustomerDemoApp.Model;
+using CustomerDemoApp.Models;
 
 namespace CustomerDemoApp.DataAccess
 {
@@ -8,11 +8,11 @@ namespace CustomerDemoApp.DataAccess
     /// </summary>
     public class CustomerAddedEventArgs : EventArgs
     {
-        public CustomerAddedEventArgs(Customer newCustomer)
+        public CustomerAddedEventArgs(FECustomer newCustomer)
         {
             this.NewCustomer = newCustomer;
         }
 
-        public Customer NewCustomer { get; private set; }
+        public FECustomer NewCustomer { get; private set; }
     }
 }

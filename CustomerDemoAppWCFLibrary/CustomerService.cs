@@ -8,34 +8,36 @@ using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using System.Windows;
+using CustomerDemoApp.Models;
 
 namespace CustomerDemoApp.Service
 {
     public class CustomerService : ICustomerService
     {
-        CustomersDataContext db = new CustomersDataContext();
+        private static CustomersDataContext db = new CustomersDataContext();
+
         public CustomerService()
             : base()
         {
 
         }
 
-        public List<Customer> getAllCustomers()
+        public List<DBCustomer> getAllCustomers()
         {
             var i = (from customer in db.Customers
                      select customer);
             return i.ToList();
         }
 
-        public void addCustomer(Customer customer)
+        public void addCustomer(DBCustomer c)
         {
-            db.Customers.InsertOnSubmit(customer);
+            db.Customers.InsertOnSubmit(c);
             db.SubmitChanges();
         }
 
-        public void deleteCustomer(Customer customer)
+        public void deleteCustomer(DBCustomer c)
         {
-            db.Customers.DeleteOnSubmit(customer);
+            db.Customers.DeleteOnSubmit(c);
             db.SubmitChanges();
         }
     }

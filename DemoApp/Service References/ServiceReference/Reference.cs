@@ -15,24 +15,27 @@ namespace CustomerDemoApp.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/CustomerDemoApp.Service")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DBCustomer", Namespace="http://schemas.datacontract.org/2004/07/CustomerDemoApp.Models")]
     [System.SerializableAttribute()]
-    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DBCustomer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CurpField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurpField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -45,32 +48,19 @@ namespace CustomerDemoApp.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Curp {
+        public int Id {
             get {
-                return this.CurpField;
+                return this.IdField;
             }
             set {
-                if ((object.ReferenceEquals(this.CurpField, value) != true)) {
-                    this.CurpField = value;
-                    this.RaisePropertyChanged("Curp");
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
         public string FirstName {
             get {
                 return this.FirstNameField;
@@ -83,7 +73,7 @@ namespace CustomerDemoApp.ServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
         public string LastName {
             get {
                 return this.LastNameField;
@@ -92,6 +82,32 @@ namespace CustomerDemoApp.ServiceReference {
                 if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
                     this.LastNameField = value;
                     this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public string Curp {
+            get {
+                return this.CurpField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurpField, value) != true)) {
+                    this.CurpField = value;
+                    this.RaisePropertyChanged("Curp");
                 }
             }
         }
@@ -111,13 +127,13 @@ namespace CustomerDemoApp.ServiceReference {
     public interface CustomerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustomerService/getAllCustomers", ReplyAction="http://tempuri.org/CustomerService/getAllCustomersResponse")]
-        CustomerDemoApp.ServiceReference.Customer[] getAllCustomers();
+        CustomerDemoApp.ServiceReference.DBCustomer[] getAllCustomers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustomerService/addCustomer", ReplyAction="http://tempuri.org/CustomerService/addCustomerResponse")]
-        void addCustomer(CustomerDemoApp.ServiceReference.Customer customer);
+        void addCustomer(CustomerDemoApp.ServiceReference.DBCustomer customer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustomerService/deleteCustomer", ReplyAction="http://tempuri.org/CustomerService/deleteCustomerResponse")]
-        void deleteCustomer(CustomerDemoApp.ServiceReference.Customer customer);
+        void deleteCustomer(CustomerDemoApp.ServiceReference.DBCustomer customer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -147,15 +163,15 @@ namespace CustomerDemoApp.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public CustomerDemoApp.ServiceReference.Customer[] getAllCustomers() {
+        public CustomerDemoApp.ServiceReference.DBCustomer[] getAllCustomers() {
             return base.Channel.getAllCustomers();
         }
         
-        public void addCustomer(CustomerDemoApp.ServiceReference.Customer customer) {
+        public void addCustomer(CustomerDemoApp.ServiceReference.DBCustomer customer) {
             base.Channel.addCustomer(customer);
         }
         
-        public void deleteCustomer(CustomerDemoApp.ServiceReference.Customer customer) {
+        public void deleteCustomer(CustomerDemoApp.ServiceReference.DBCustomer customer) {
             base.Channel.deleteCustomer(customer);
         }
     }
