@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDemoAppBackend", "C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FEA4EC95-1127-4250-9D66-8B90ABA315B3}"
 	ProjectSection(SolutionItems) = preProject
+		CustomerDemoApp.mdf = CustomerDemoApp.mdf
+		CustomerDemoApp_log.ldf = CustomerDemoApp_log.ldf
 		README.txt = README.txt
 		TODO.txt = TODO.txt
 	EndProjectSection
