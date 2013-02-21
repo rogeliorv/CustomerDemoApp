@@ -88,7 +88,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\FECustomer.cs" />
-    <Compile Include="Model\Interface1.cs" />
+    <Compile Include="Model\ICustomerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

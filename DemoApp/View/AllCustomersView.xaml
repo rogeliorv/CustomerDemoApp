@@ -70,6 +70,11 @@
             Header="CURP" 
             DisplayMemberBinding="{Binding Path=Curp}" 
             />
+
+            <GridViewColumn 
+                Header="Delete" 
+                DisplayMemberBinding="{Binding Path=Delete}" 
+            />
                 </GridView>
       </ListView.View>
     </ListView>

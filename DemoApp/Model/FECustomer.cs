@@ -12,9 +12,10 @@ namespace CustomerDemoApp.Models
     /// <summary>
     /// Front end customer model.
     /// </summary>
-    public partial class FECustomer : IDataErrorInfo
+    public partial class FECustomer : IDataErrorInfo, ICustomerBase
     {
 
+        public int Id { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -146,7 +147,7 @@ namespace CustomerDemoApp.Models
 
         public static FECustomer FromBaseCustomer(DBCustomer c)
         {
-            return new FECustomer { FirstName = c.FirstName, LastName = c.LastName, Email = c.Email, Curp = c.Curp };
+            return new FECustomer { Id = c.Id, FirstName = c.FirstName, LastName = c.LastName, Email = c.Email, Curp = c.Curp };
         }
     }
 }

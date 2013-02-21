@@ -246,7 +246,7 @@ namespace CustomerDemoApp.Models
 
         public static DBCustomer FromFECustomer(FECustomer c)
         {
-            return new DBCustomer { FirstName = c.FirstName, LastName = c.LastName, Email = c.Email, Curp = c.Curp };
+            return new DBCustomer { Id = c.Id, FirstName = c.FirstName, LastName = c.LastName, Email = c.Email, Curp = c.Curp };
         }
     }
 }

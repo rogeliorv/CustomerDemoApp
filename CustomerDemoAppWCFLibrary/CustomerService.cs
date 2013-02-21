@@ -14,12 +14,13 @@ namespace CustomerDemoApp.Service
 {
     public class CustomerService : ICustomerService
     {
-        private static CustomersDataContext db = new CustomersDataContext();
+
+        private CustomersDataContext db; 
 
         public CustomerService()
             : base()
         {
-
+            db = new CustomersDataContext();
         }
 
         public List<DBCustomer> getAllCustomers()
@@ -37,8 +38,12 @@ namespace CustomerDemoApp.Service
 
         public void deleteCustomer(DBCustomer c)
         {
-            db.Customers.DeleteOnSubmit(c);
-            db.SubmitChanges();
+            if (c != null)
+            {
+                db.Customers.Attach(c);
+                db.Customers.DeleteOnSubmit(c);
+                db.SubmitChanges();
+            }
         }
     }
 }

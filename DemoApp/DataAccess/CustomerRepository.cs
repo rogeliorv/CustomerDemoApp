@@ -19,7 +19,6 @@ namespace CustomerDemoApp.DataAccess
         readonly List<FECustomer> _customers;
         private static CustomerServiceClient client = new CustomerServiceClient();
 
-
         /// <summary>
         /// Creates a new repository of customers.
         /// </summary>
@@ -47,7 +46,8 @@ namespace CustomerDemoApp.DataAccess
 
             if (!_customers.Contains(customer))
             {
-                client.addCustomer(new DBCustomer { });
+                // TODO: Use static method
+                client.addCustomer(new DBCustomer { Id = customer.Id, FirstName = customer.FirstName, LastName = customer.LastName, Curp = customer.Curp, Email = customer.Email} );
                 _customers.Add(customer);
 
 
